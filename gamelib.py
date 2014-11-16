@@ -28,9 +28,9 @@ class SimpleGame:
             if event.type == QUIT:
                 self.terminate()
             elif event.type == KEYDOWN:
-                self.onKeyUp(event.key)
+                self.on_key_down(event.key)
             elif event.type ==KEYUP:
-                self.onKeyDown(event.key)
+                self.on_key_up(event.key)
 
     def run(self):
         self.game_init()
@@ -50,8 +50,8 @@ class SimpleGame:
     def render(self):
         pass
 
-    def onKeyDown(self, key):
+    def on_key_up(self, key):
         pass
 
-    def onKeyUp(self, key):
+    def on_key_down(self, key):
         pass

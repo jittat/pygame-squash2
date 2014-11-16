@@ -4,10 +4,10 @@ from pygame.locals import *
 import gamelib
 
 class SquashGame(gamelib.SimpleGame):
-    def onKeyUp(self,k):
+    def on_key_up(self,k):
         print 'UP: ',k
         
-    def onKeyDown(self,k):
+    def on_key_down(self,k):
         print 'DOWN: ',k
         
 
