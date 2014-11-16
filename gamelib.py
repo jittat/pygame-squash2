@@ -13,17 +13,14 @@ class SimpleGame:
 
         self.terminated = False
 
-    def game_init(self):
+    def __game_init(self):
         pygame.init()
         self.clock = pygame.time.Clock()
         self.display = pygame.display.set_mode(self.window_size)
         pygame.display.set_caption(self.title)
         self.font = pygame.font.SysFont("monospace", 20)        
 
-    def terminate(self):
-        self.terminated = True
-
-    def handle_events(self):
+    def __handle_events(self):
         for event in pygame.event.get():
             if event.type == QUIT:
                 self.terminate()
@@ -32,17 +29,20 @@ class SimpleGame:
             elif event.type ==KEYUP:
                 self.on_key_up(event.key)
 
+    def terminate(self):
+        self.terminated = True
+
     def run(self):
-        self.game_init()
+        self.init()
         while not self.terminated:
-            self.handle_events()
+            self.__handle_events()
 
             self.update()
             self.render()
             self.clock.tick(self.fps)
     
     def init(self):
-        pass
+        self.__game_init()
 
     def update(self):
         pass
