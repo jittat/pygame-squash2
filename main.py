@@ -3,10 +3,17 @@ from pygame.locals import *
 
 import gamelib
 
-def main():
-    game = gamelib.SimpleGame('Test')
-    game.run()
+class SquashGame(gamelib.SimpleGame):
+    def onKeyUp(self,k):
+        print 'UP: ',k
+        
+    def onKeyDown(self,k):
+        print 'DOWN: ',k
+        
 
+def main():
+    game = SquashGame('Test')
+    game.run()
 
 if __name__ == '__main__':
     main()

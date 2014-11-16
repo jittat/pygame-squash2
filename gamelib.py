@@ -11,6 +11,8 @@ class SimpleGame:
         self.window_size = window_size
         self.fps = fps
 
+        self.terminated = False
+
     def game_init(self):
         pygame.init()
         self.clock = pygame.time.Clock()
@@ -18,9 +20,23 @@ class SimpleGame:
         pygame.display.set_caption(self.title)
         self.font = pygame.font.SysFont("monospace", 20)        
 
+    def terminate(self):
+        self.terminated = True
+
+    def handle_events(self):
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                self.terminate()
+            elif event.type == KEYDOWN:
+                self.onKeyUp(event.key)
+            elif event.type ==KEYUP:
+                self.onKeyDown(event.key)
+
     def run(self):
         self.game_init()
-        while True:
+        while not self.terminated:
+            self.handle_events()
+
             self.update()
             self.render()
             self.clock.tick(self.fps)
@@ -34,4 +50,8 @@ class SimpleGame:
     def render(self):
         pass
 
+    def onKeyDown(self, key):
+        pass
 
+    def onKeyUp(self, key):
+        pass
