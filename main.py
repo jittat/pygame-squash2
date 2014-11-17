@@ -28,15 +28,14 @@ class SquashGame(gamelib.SimpleGame):
     def update(self):
         self.ball.move(1./self.fps, self.surface, self.player)
 
-        if pygame.key.get_pressed()[K_UP]:
-            self.player.pos -= 5
-        elif pygame.key.get_pressed()[K_DOWN]:
-            self.player.pos += 5
+        if self.is_key_pressed(K_UP):
+            self.player.move_up()
+        elif self.is_key_pressed(K_DOWN):
+            self.player.move_down()
         
         if self.player.can_hit(self.ball):
             self.score += 1
             self.render_score()
-            print "HIT"
             self.ball.bounce_player()
         
     def render_score(self):

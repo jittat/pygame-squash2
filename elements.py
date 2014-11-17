@@ -46,6 +46,12 @@ class Player(object):
         return self.pos-self.width/2.0 < ball.y < self.pos+self.width/2.0 \
             and ball.x-ball.radius < self.THICKNESS
 
+    def move_up(self):
+        self.pos -= 5
+
+    def move_down(self):
+        self.pos += 5
+
     def render(self, surface):
         pygame.draw.rect(surface,
                          self.color,

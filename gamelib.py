@@ -47,7 +47,13 @@ class SimpleGame(object):
             pygame.display.update()
 
             self.clock.tick(self.fps)
-    
+
+    def is_key_pressed(self, key):
+        keys_pressed = pygame.key.get_pressed()
+        if key < 0 or key >= len(keys_pressed):
+            return False
+        return (keys_pressed[key])
+
     def init(self):
         self.__game_init()
 
